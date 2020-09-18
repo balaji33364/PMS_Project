@@ -1,6 +1,5 @@
 @extends('layouts.app')
 @section('content')
-@if(!Auth::guest())
 @if(auth()->user()->role=='customer')
 {{$flag=false}}
   <h2><u>Customer request status:-</u></h2><br>
@@ -58,6 +57,5 @@
   @else
   <h3>No booking request found</h3>
   @endif
-@endif
 @endif
 @endsection
