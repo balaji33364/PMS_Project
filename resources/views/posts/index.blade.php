@@ -23,8 +23,10 @@
                         <h2>Location: {{$post->body}}</h2>
                         <h2>Staffs: {{$post->no_of_staffs}}</h2>
                         <h2>Vacancy: {{$post->no_of_vacancies}}</h2>
-                        @if(auth()->user()->role=='customer')
-                                 <a href="index/{{$post->id}}"><button type="button" class="btn btn-primary">Book</button></a>
+                        @if(!Auth::guest())
+                                        @if(auth()->user()->role=='customer')
+                                                <a href="index/{{$post->id}}"><button type="button" class="btn btn-primary">Book</button></a>
+                                        @endif
                         @endif
                            <hr>
                         <br>
