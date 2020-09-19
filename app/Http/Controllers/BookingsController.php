@@ -48,30 +48,28 @@ class BookingsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store($id)
+    public function store(Request $request)
     {
-    
-        
-        
+
+        $this->validate($request, [
+        'room_number' => 'required|integer'
+        ]);
+        $roomnumber=$request->input('room_number');
+        $id=$request->input('id');
         $data=Post::find($id);
-        //$data=DB::select('select * from posts where id=?',[$id]);
+        if( $roomnumber > $data->no_of_vacancies)
+        {
+            return redirect('posts')->with('status1',' vacant rooms are not available in our hotel !!')->with('roomnumber',$roomnumber);
+        }
         $booking=new Booking;
         $booking->admin_id=$data->user_id;
         $booking->customer_id=auth()->User()->id;
         $booking->room_name=$data->title;
         $booking->status='pending';
+        $booking->room_book=$roomnumber;
         $booking->save();
-        return redirect('posts')->with('status','You have done booking successfully');
-
-     
-        
-        /*$booking=new Booking;
-        $booking->admin_id=$post->user_id;
-        $booking->customer_id=auth()->user()->id; 
-        $booking->room_name=$post->title;
-        $booking->save();
-
-        return redirect('view.index')->with('success','Room Booked');  */
+        $roomnumber1=$roomnumber;
+        return redirect('posts')->with('status',' rooms have been booked by you in our hotel successfully !!')->with('roomnumber1',$roomnumber1);
     }
 
     /**
@@ -149,7 +147,7 @@ class BookingsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        
     }
 
     /**

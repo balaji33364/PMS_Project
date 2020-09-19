@@ -15,7 +15,8 @@ class Booking extends Model
        'room_name',
        'status',
         'created_at',
-        'updated_at'
+        'updated_at',
+        'room_book'
    ];
 
     public function user(){
