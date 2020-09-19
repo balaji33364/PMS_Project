@@ -28,7 +28,7 @@ Route::resource('posts','PostController');
 Route::resource('Bookings','BookingsController');
 
 //Route::get('index/{id}','BookingsController@show');
-//Route::get('index/{id}','BookingsController@store');
+//Route::get('index/{id}','BookingsController@store')
 
 Route::get('/CheckRequest','BookingsController@index');
 Route::get('tk/{id}/{flag}','BookingsController@edit');
