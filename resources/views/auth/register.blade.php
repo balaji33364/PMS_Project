@@ -32,7 +32,7 @@
 
                             <div class="col-md-6">
                                 
-                                <input id="role" type="text" class="form-control @error('role') is-invalid @enderror" name="role" value="{{ old('role') }}" required autocomplete="role" autofocus>
+                                <input id="role" type="text" class="form-control @error('role') is-invalid @enderror" name="role" value="{{ old('role') }}" placeholder="admin or customer" required autocomplete="role" autofocus>
 
                                 @error('role')
                                     <span class="invalid-feedback" role="alert">
