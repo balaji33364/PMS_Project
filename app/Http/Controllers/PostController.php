@@ -44,7 +44,7 @@ class PostController extends Controller
             return view('posts.create');
         }
 
-        return redirect('/posts')->with('Error','Unauthorized Page');
+        return redirect('/posts')->with('error','Unauthorized Page');
     }
 
     /**

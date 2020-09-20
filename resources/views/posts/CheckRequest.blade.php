@@ -21,7 +21,7 @@
                     @endif
                     @if($post->status=='pending')
                         <div class="alert alert-primary" style="font-size: 1.6rem;">
-                         your booking request for {{$post->room_book}} rooms in {{$post->admin_name}} Hotel is Pending.
+                         your booking request for {{$post->room_book}} rooms in {{$post->room_name}} Hotel is Pending.
                         </div>
                     @endif
                            <hr>

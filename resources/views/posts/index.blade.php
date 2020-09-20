@@ -4,10 +4,27 @@
  @error('room_number')
   <div class="alert alert-danger" style="font-size: 1.6rem;">{{ $message }}</div>
   @enderror
-  <div class='container'>
-    @include('inc.message')
-    
-</div>
+
+  @if (\Session::has('success'))
+    <div class="alert alert-success">
+        <ul>
+            <li>{!! \Session::get('success') !!}</li>
+        </ul>
+    </div>
+@endif
+  
+  
+  
+  @if (\Session::has('error'))
+  <div class="alert alert-danger">
+      <ul>
+          <li>{!! \Session::get('error') !!}</li>
+      </ul>
+  </div>
+@endif
+  
+ 
+
 @if(session('roomnumber1'))
     @if (session('status'))
    <div class="alert alert-success" style="font-size: 1.6rem;">
