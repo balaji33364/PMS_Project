@@ -9,7 +9,21 @@
         <div class="row">
                 <div class="col-md-8 col sm-4">
                   @if(auth()->user()->id == $post->customer_id) 
-                  <h3>Booking for the room in {{$post->room_name}} is {{$post->status}}</h3>
+                    @if($post->status=='Accept')
+                        <div class="alert alert-success" style="font-size: 1.6rem;">
+                        {{$post->admin_name}} had accepted your booking request for {{$post->room_book}} rooms in his Hotel.
+                        </div>
+                    @endif
+                    @if($post->status=='Decline')
+                        <div class="alert alert-danger" style="font-size: 1.6rem;">
+                        {{$post->admin_name}} had rejected your booking request for {{$post->room_book}} rooms in his Hotel.
+                        </div>
+                    @endif
+                    @if($post->status=='pending')
+                        <div class="alert alert-primary" style="font-size: 1.6rem;">
+                         your booking request for {{$post->room_book}} rooms in {{$post->admin_name}} Hotel is Pending.
+                        </div>
+                    @endif
                            <hr>
                       <br>
                     <div style="display:none">{{$flag = true}}</div>
@@ -27,7 +41,7 @@
    {{$flag=false}}
   <h2><u>Admin sending Response to customer:-></u></h2><br>
   @if (session('status'))
-    <div class="alert alert-success">
+    <div class="alert alert-success" style="font-size: 1.6rem;">
         {{ session('status') }}
     </div>
   @endif
@@ -40,7 +54,7 @@
                         @if( $post->status == 'Accept'|| $post->status == 'Decline' )
                         
                         @else
-                          <h3>There is room booking request in your {{$post->room_name}} hotel</h3>
+                          <h3>{{$post->customer_name}} wants to book {{$post->room_book}} rooms in your Hotel.</h3>
                           <a href="tk/{{$post->id}}/{{1}}"><button class="btn btn-primary" type="submit">Accept</button></a>
                           <a href="tk/{{$post->id}}/{{0}}"><button class="btn btn-primary" type="submit">Decline</button></a>
                           <hr>

@@ -60,12 +60,17 @@ class BookingsController extends Controller
         {
             return redirect('posts')->with('status1',' vacant rooms are not available in our hotel !!')->with('var',$var)->with('roomnumber',$roomnumber);
         }
+        $v=User::find($data->user_id);
+        $w=User::find(auth()->User()->id);
+
         $booking=new Booking;
         $booking->admin_id=$data->user_id;
         $booking->customer_id=auth()->User()->id;
         $booking->room_name=$data->title;
         $booking->status='pending';
         $booking->room_book=$roomnumber;
+        $booking->admin_name=$v->name;
+        $booking->customer_name=$w->name;
         $booking->save();
         $roomnumber1=$roomnumber;
         return redirect('posts')->with('status',' rooms have been booked by you in our hotel successfully !!')->with('roomnumber1',$roomnumber1);
@@ -86,8 +91,7 @@ class BookingsController extends Controller
         $var2=User::find($data1->user_id);
         $staff=$var1->name;
         $custo=$var2->name;
-        echo $name1;
-        return view('posts.CheckRequest',compact('staff','custo'))->with('data',$data);
+        return redirect('CheckRequest')->with();
     }
 
     /**
