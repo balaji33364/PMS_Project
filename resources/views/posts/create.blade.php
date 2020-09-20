@@ -1,5 +1,11 @@
 @extends('layouts.app')
 @section('content')
+
+
+<div class='container'>
+    @include('inc.message')
+    
+</div>
 <div class="well">
 <h1>Create Posts</h1>
 </div>
