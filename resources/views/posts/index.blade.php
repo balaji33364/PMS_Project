@@ -1,6 +1,9 @@
 @extends('layouts.app')
 @section('content')
 <h1>Posts</h1>
+ @error('room_number')
+  <div class="alert alert-danger" style="font-size: 1.6rem;">{{ $message }}</div>
+  @enderror
 @if(session('roomnumber1'))
     @if (session('status'))
    <div class="alert alert-success" style="font-size: 1.6rem;">
@@ -31,17 +34,16 @@
                                             <div class="form-group" style="font-size: 1.6rem;">
                                             {{form::label('','No.of room you want to book')}}
                                             {{form::text('room_number','',['class'=> 'form-control', 'placeholder' => 'No .of rooms'])}}
-                                            </div>
-                                            @error('room_number')
-                                            <div class="alert alert-danger" style="font-size: 1.6rem;">{{ $message }}</div>
-                                            @enderror
                                             {{ Form::hidden('id',$post->id)}}
+
+                                            @if(session('var')==$post->id)
                                             @if(session('roomnumber'))
                                                 @if (session('status1'))
                                                <div class="alert alert-danger" style="font-size: 1.6rem;">
                                                {{ session ('roomnumber') }} {{ session('status1') }}
                                                </div>
                                                 @endif
+                                            @endif
                                             @endif
                                             {{form::submit('Book',['class' => 'btn btn-primary'])}}
                                             {!! Form::close() !!}

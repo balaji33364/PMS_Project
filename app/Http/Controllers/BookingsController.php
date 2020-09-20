@@ -8,7 +8,7 @@ use App\Booking;
 use App\Post;
 use App\User;
 use DB;
-
+use Validator;
 class BookingsController extends Controller
 {
     /**
@@ -50,16 +50,15 @@ class BookingsController extends Controller
      */
     public function store(Request $request)
     {
-
         $this->validate($request, [
         'room_number' => 'required|integer'
         ]);
         $roomnumber=$request->input('room_number');
-        $id=$request->input('id');
-        $data=Post::find($id);
+        $var=$request->input('id');
+        $data=Post::find($var);
         if( $roomnumber > $data->no_of_vacancies)
         {
-            return redirect('posts')->with('status1',' vacant rooms are not available in our hotel !!')->with('roomnumber',$roomnumber);
+            return redirect('posts')->with('status1',' vacant rooms are not available in our hotel !!')->with('var',$var)->with('roomnumber',$roomnumber);
         }
         $booking=new Booking;
         $booking->admin_id=$data->user_id;
