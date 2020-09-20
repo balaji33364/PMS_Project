@@ -20,9 +20,7 @@ class PostController extends Controller
         $this->middleware('auth', ['except' => ['index','show']]);
     }   
 
-    public function posts(){
-        return response()->json(post::get(),200);
-    }
+    
    
    
    
