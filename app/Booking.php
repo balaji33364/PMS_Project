@@ -18,7 +18,8 @@ class Booking extends Model
         'updated_at',
         'room_book',
         'admin_name',
-        'customer_name'
+        'customer_name',
+        'post_id'
    ];
 
     public function user(){
