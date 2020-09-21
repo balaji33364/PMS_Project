@@ -54,7 +54,7 @@
                         @if( $post->status == 'Accept'|| $post->status == 'Decline' )
                         
                         @else
-                          <h3>{{$post->customer_name}} wants to book {{$post->room_book}} rooms in your Hotel.</h3>
+                          <h3>{{$post->customer_name}} wants to book {{$post->room_book}} rooms in {{$post->room_name}} Hotel.</h3>
                           <a href="tk/{{$post->id}}/{{1}}"><button class="btn btn-primary" type="submit">Accept</button></a>
                           <a href="tk/{{$post->id}}/{{0}}"><button class="btn btn-primary" type="submit">Decline</button></a>
                           <hr>

@@ -47,6 +47,7 @@
                         <a href="/posts" button type="button" class="btn btn-primary">Post</a>
                         <a href="/posts/create" button type="button" class="btn btn-primary">Create Post</a>
                         <a href="/CheckRequest" button type="button" class="btn btn-primary">CheckRequest</a>
+                        <a href="/qrgen" button type="button" class="btn btn-primary">QR_Code_Generator</a>
                       </div>
 
                     <!-- Right Side Of Navbar -->

@@ -32,6 +32,6 @@ class HomeController extends Controller
         $user=User::find($user_id);
         return view('home')->with('posts',$user->posts);
         }
-        return redirect('/posts')->with('error','unauthorized page'); 
+        return redirect('/posts'); 
     }
 }

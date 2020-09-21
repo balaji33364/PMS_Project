@@ -20,9 +20,7 @@ class PostController extends Controller
         $this->middleware('auth', ['except' => ['index','show']]);
     }   
 
-    public function posts(){
-        return response()->json(post::get(),200);
-    }
+    
    
    
    
@@ -75,7 +73,7 @@ class PostController extends Controller
             $filename =  pathinfo($filenameWithExt, PATHINFO_FILENAME);
             $extension = $request->file('cover_image')->getClientOriginalExtension();
 
-            $fileNameToStore=$filename.'_'.time().'_'.$extension;
+            $fileNameToStore=$filename.'_'.time().'.'.$extension;
             $path= $request->file('cover_image')->storeAs('public/cover_images',$fileNameToStore);
         }
         else{
@@ -147,7 +145,7 @@ class PostController extends Controller
             $filenameWithExt=$request->file('cover_image')->getClientOriginalName();
             $filename =  pathinfo($filenameWithExt, PATHINFO_FILENAME);
             $extension = $request->file('cover_image')->getClientOriginalExtension();
-            $fileNameToStore=$filename.'_'.time().'_'.$extension;
+            $fileNameToStore=$filename.'_'.time().'.'.$extension;
             $path= $request->file('cover_image')->storeAs('public/cover_images',$fileNameToStore);
         }
        
