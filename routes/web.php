@@ -24,6 +24,12 @@ Route::get('/about', 'PagesController@about');
 
 Route::get('services',  'PagesController@services');
 
+Route::get('/qrgen', function () {
+    return view('qrcode.index');
+});
+
+Route::post('/qrgenerator','PagesController@save');
+
 Route::resource('posts','PostController');
 Route::resource('Bookings','BookingsController');
 
