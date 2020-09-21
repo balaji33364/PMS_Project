@@ -71,6 +71,7 @@ class BookingsController extends Controller
         $booking->room_book=$roomnumber;
         $booking->admin_name=$v->name;
         $booking->customer_name=$w->name;
+        $booking->post_id=$var;
         $booking->save();
         $roomnumber1=$roomnumber;
         return redirect('posts')->with('status',' rooms have been booked by you in our hotel successfully !!')->with('roomnumber1',$roomnumber1);
@@ -112,12 +113,11 @@ class BookingsController extends Controller
             $data->room_name=$var->room_name;
             if($flag==1)
             {
-                /*$var=Booking::find($id);
-                $data=new Booking;
-                $data->id=$id;
-                $data->admin_id=auth()->user()->id;
-                $data->customer_id=$var->customer_id;
-                $data->room_name=$var->room_name;*/
+                $No_of_room=$var->room_book;
+                $post_id=$var->post_id;
+                $post=Post::find($post_id);
+                $roomleft=$post->no_of_vacancies-$No_of_room;
+                DB::update('update posts set no_of_vacancies=? where id=?',[$roomleft,$post_id]);
                 $data->status='Accept';
                 DB::update('update bookings set admin_id=?,customer_id=?,room_name=?,status=? where id =?',[$data->admin_id,$data->customer_id,$data->room_name,$data->status,$id]);
             }

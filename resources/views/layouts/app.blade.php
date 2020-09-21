@@ -41,7 +41,7 @@
                     </ul>
 
                     <div class="topnav">
-                        <a href="/" button type="button" class="btn btn-primary">Home</a>
+                        <a href="/home" button type="button" class="btn btn-primary">Home</a>
                         <a href="/about" button type="button" class="btn btn-primary" >About</a>
                         <a href="/services" button type="button" class="btn btn-primary">Services</a>
                         <a href="/posts" button type="button" class="btn btn-primary">Post</a>
